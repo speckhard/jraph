@@ -48,7 +48,7 @@ def run():
   # Creates a GraphsTuple from scratch containing a single graph with nested
   # feature vectors.
   # The graph has 3 nodes and 2 edges.
-  # The feature vector can be arbitrary nested types of dict, list and tuple,
+  # The feature vector can be an arbitrary nested types of dict, list and tuple,
   # or any other type you registered with jax.tree_util.register_pytree_node.
   nested_graph = jraph.GraphsTuple(
       n_node=np.asarray([3]), n_edge=np.asarray([2]),
@@ -57,10 +57,10 @@ def run():
       senders=np.array([0, 1]), receivers=np.array([2, 2]))
   logging.info("Nested graph %r", nested_graph)
 
-  # Creates a GraphsTuple from scratch containing a 2 graphs using an implicit
+  # Creates a GraphsTuple from scratch containing 2 graphs using an implicit
   # batch dimension.
   # The first graph has 3 nodes and 2 edges.
-  # The second graph has 1 nodes and 1 edges.
+  # The second graph has 1 node and 1 edge.
   # Each node has a 4-dimensional feature vector.
   # Each edge has a 5-dimensional feature vector.
   # The graph itself has a 6-dimensional feature vector.
@@ -104,7 +104,7 @@ def run():
   single_graph = jraph.unpad_with_graphs(padded_graph)
   logging.info("Unpadded graph %r", single_graph)
 
-  # Creates a GraphsTuple containing a 2 graphs using an explicit batch
+  # Creates a GraphsTuple containing 2 graphs using an explicit batch
   # dimension.
   # An explicit batch dimension requires more memory, but can simplify
   # the definition of functions operating on the graph.
